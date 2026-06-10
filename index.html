@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Siri Sarees Divine | Premium Saree Boutique</title>
-  <meta name="description" content="Siri Sarees Divine offers premium silk, cotton, Banarasi, Mysore silk, georgette, and designer sarees.">
+  <title>Siri Saree Divine | Premium Saree Boutique</title>
+  <meta name="description" content="Siri Saree Divine offers premium silk, cotton, Banarasi, Mysore silk, georgette, and designer sarees.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,11 +19,11 @@
         <input id="searchInput" type="search" placeholder="Search sarees..." aria-label="Search sarees">
       </form>
 
-      <a class="brand" href="#home" aria-label="Siri Sarees Divine home">
+      <a class="brand" href="#home" aria-label="Siri Saree Divine home">
         <span class="brand-mark">
           <img src="assets/ssd-circle-logo.png" alt="" aria-hidden="true">
         </span>
-        <span>Siri Sarees Divine</span>
+        <span>Siri Saree Divine</span>
       </a>
 
       <div class="header-actions" aria-label="Store actions">
@@ -77,42 +77,42 @@
       </div>
 
       <div class="category-grid">
-        <article class="category-card reveal">
+        <article class="category-card reveal" role="button" tabindex="0" data-category="Silk Sarees" aria-label="Shop Silk Sarees">
           <img src="https://images.pexels.com/photos/15181109/pexels-photo-15181109.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Silk Sarees">
           <div>
-            <h3>Silk Sarees</h3>
+            <h3>Kanchipuram pattu Sarees</h3>
             <p>Lustrous festive classics</p>
           </div>
         </article>
-        <article class="category-card reveal">
+        <article class="category-card reveal" role="button" tabindex="0" data-category="Cotton Sarees" aria-label="Shop Cotton Sarees">
           <img src="https://images.pexels.com/photos/35212992/pexels-photo-35212992.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Cotton Sarees">
           <div>
-            <h3>Cotton Sarees</h3>
+            <h3>Handloom Cotton Sarees</h3>
             <p>Airy everyday elegance</p>
           </div>
         </article>
-        <article class="category-card reveal">
-          <img src="https://images.pexels.com/photos/19891846/pexels-photo-19891846.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Banarasi Sarees">
+        <article class="category-card reveal" role="button" tabindex="0" data-category="Banarasi Sarees" aria-label="Shop Banarasi Sarees">
+          <img src="https://www.weddingplz.com/blog/wp-content/uploads/PSX_20230922_200034.jpg" alt="Banarasi Sarees">
           <div>
             <h3>Banarasi Sarees</h3>
             <p>Royal woven heritage</p>
           </div>
         </article>
-        <article class="category-card reveal">
-          <img src="https://images.pexels.com/photos/12006825/pexels-photo-12006825.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Mysore Silk Sarees">
+        <article class="category-card reveal" role="button" tabindex="0" data-category="Mysore Silk Sarees" aria-label="Shop Mysore Silk Sarees">
+          <img src="https://i.pinimg.com/originals/88/8c/20/888c20f723146371089939d96b690c6c.jpg" alt="Mysore Silk Sarees">
           <div>
             <h3>Mysore Silk</h3>
             <p>Refined southern grace</p>
           </div>
         </article>
-        <article class="category-card reveal">
+        <article class="category-card reveal" role="button" tabindex="0" data-category="Georgette Sarees" aria-label="Shop Georgette Sarees">
           <img src="https://images.pexels.com/photos/9418955/pexels-photo-9418955.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Georgette Sarees">
           <div>
             <h3>Georgette Sarees</h3>
             <p>Flowy party silhouettes</p>
           </div>
         </article>
-        <article class="category-card reveal">
+        <article class="category-card reveal" role="button" tabindex="0" data-category="Designer Sarees" aria-label="Shop Designer Sarees">
           <img src="https://images.pexels.com/photos/9419184/pexels-photo-9419184.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Designer Sarees">
           <div>
             <h3>Designer Sarees</h3>
@@ -120,6 +120,24 @@
           </div>
         </article>
       </div>
+    </section>
+
+    <section class="section dynamic-section" id="categoryResults" aria-live="polite">
+      <div class="section-toolbar">
+        <button class="back-link" type="button" id="closeCategory">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to categories
+        </button>
+        <button class="close-section" type="button" id="closeCategoryX" aria-label="Close category results">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="section-heading">
+        <p class="eyebrow">Selected Collection</p>
+        <h2 id="categoryTitle">Category Sarees</h2>
+      </div>
+      <div class="loading-line" id="categoryLoading">Loading divine drapes...</div>
+      <div class="product-grid" id="categoryGrid"></div>
     </section>
 
     <section class="features" id="features">
@@ -154,14 +172,38 @@
       <p class="search-summary" id="searchSummary" aria-live="polite"></p>
       <div class="product-grid" id="productGrid"></div>
       <p class="empty-state" id="emptyState">No sarees found</p>
+      <div class="center-action">
+        <button class="btn btn-primary" type="button" id="viewMoreTrending">View More</button>
+      </div>
+    </section>
+
+    <section class="section dynamic-section" id="moreCollections" aria-live="polite">
+      <div class="section-toolbar">
+        <button class="back-link" type="button" id="backToTrending">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to trending
+        </button>
+        <button class="close-section" type="button" id="closeMoreCollections" aria-label="Close more collections">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="section-heading">
+        <p class="eyebrow">Expanded Boutique</p>
+        <h2>More Divine Collections</h2>
+      </div>
+      <div class="loading-line" id="moreLoading">Loading more sarees...</div>
+      <div class="product-grid" id="moreGrid"></div>
+      <div class="center-action">
+        <button class="btn btn-primary" type="button" id="loadMoreProducts">Load More</button>
+      </div>
     </section>
 
     <section class="newsletter" id="newsletter">
       <div class="newsletter-inner reveal">
         <p class="eyebrow">Divine Updates</p>
         <h2>Receive New Collection Alerts</h2>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email" aria-label="Email address" required>
+        <form class="newsletter-form" id="subscriptionForm" novalidate>
+          <input id="subscriptionPhone" type="tel" placeholder="Enter your phone number" aria-label="Phone number" autocomplete="tel" required>
           <button class="btn btn-primary" type="submit">Subscribe</button>
         </form>
         <p class="form-message" aria-live="polite"></p>
@@ -172,7 +214,7 @@
   <footer class="site-footer" id="contact">
     <div class="footer-grid">
       <div>
-        <h3>Siri Sarees Divine</h3>
+        <h3>Siri Saree Divine</h3>
         <p>Premium sarees crafted for celebrations, tradition, and everyday elegance.</p>
       </div>
       <div>
@@ -191,13 +233,13 @@
         <h4>Social Media</h4>
         <div class="social-links">
           <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
           <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a>
+          
         </div>
       </div>
     </div>
-    <p class="copyright">Copyright &copy; 2026 Siri Sarees Divine. All rights reserved.</p>
+    <p class="copyright">Copyright &copy; 2026 Siri Saree Divine. All rights reserved.</p>
   </footer>
 
   <div class="panel-overlay" id="panelOverlay" aria-hidden="true"></div>
@@ -212,30 +254,36 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
-    <div class="profile-card">
-      <img src="https://images.pexels.com/photos/34107842/pexels-photo-34107842.jpeg?auto=compress&cs=tinysrgb&w=260" alt="Profile picture of Ananya Rao wearing a saree">
-      <h3>Ananya Rao</h3>
-      <p>Premium Member</p>
-    </div>
-    <div class="detail-list">
-      <p><span>Email Address</span> ananya.rao@example.com</p>
-      <p><span>Phone Number</span> +91 98765 43210</p>
-      <p><span>Gender</span> Female</p>
-      <p><span>Address</span> 42 Lotus Enclave, Jayanagar, Bengaluru, Karnataka 560041</p>
-    </div>
-    <div class="orders-box">
-      <h3>My Orders</h3>
-      <div class="order-row">
-        <span>#SSD1024</span>
-        <strong>Banarasi Zari Royale</strong>
-        <em>Delivered</em>
+    <div class="auth-box" id="authBox">
+      <div class="auth-tabs" role="tablist" aria-label="Account actions">
+        <button class="auth-tab active" type="button" data-auth-tab="login">Login</button>
+        <button class="auth-tab" type="button" data-auth-tab="register">Register</button>
       </div>
-      <div class="order-row">
-        <span>#SSD1029</span>
-        <strong>Mysore Silk Temple Gold</strong>
-        <em>In Transit</em>
-      </div>
+      <form class="auth-form active" id="loginForm" novalidate>
+        <label>Email Address<input type="email" name="email" autocomplete="email" required></label>
+        <label>Phone Number<input type="tel" name="phone" autocomplete="tel" required></label>
+        <button class="checkout-btn" type="submit">Login</button>
+      </form>
+      <form class="auth-form" id="registerForm" novalidate>
+        <label>Full Name<input type="text" name="fullName" autocomplete="name" required></label>
+        <label>Email Address<input type="email" name="email" autocomplete="email" required></label>
+        <label>Phone Number<input type="tel" name="phone" autocomplete="tel" required></label>
+        <label>Gender
+          <select name="gender" required>
+            <option value="">Select gender</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non-binary</option>
+            <option>Prefer not to say</option>
+          </select>
+        </label>
+        <label>Address<textarea name="address" rows="3" required></textarea></label>
+        <label>Profile Photo URL<input type="url" name="photo" placeholder="Optional image link"></label>
+        <button class="checkout-btn" type="submit">Create Account</button>
+      </form>
+      <p class="auth-message" id="authMessage" aria-live="polite"></p>
     </div>
+    <div id="profileContent"></div>
   </aside>
 
   <aside class="side-panel" id="wishlistPanel" aria-label="Wishlist panel" aria-hidden="true">
@@ -251,6 +299,15 @@
     <div class="panel-list" id="wishlistItems"></div>
     <p class="panel-empty" id="wishlistEmpty">Your wishlist is empty.</p>
   </aside>
+
+  <div class="modal-overlay" id="quickViewModal" aria-hidden="true">
+    <div class="quick-modal" role="dialog" aria-modal="true" aria-label="Saree quick view">
+      <button class="close-panel modal-close" type="button" id="closeQuickView" aria-label="Close quick view">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="quickViewContent"></div>
+    </div>
+  </div>
 
   <aside class="side-panel" id="cartPanel" aria-label="Shopping cart panel" aria-hidden="true">
     <div class="panel-header">
@@ -268,7 +325,7 @@
       <span>Total Amount</span>
       <strong id="cartTotal">Rs. 0</strong>
     </div>
-    <button class="checkout-btn" type="button">Proceed to Checkout</button>
+    <button class="checkout-btn" id="checkoutBtn" type="button">Proceed to Checkout</button>
   </aside>
 
   <button class="back-top" type="button" aria-label="Back to top">
