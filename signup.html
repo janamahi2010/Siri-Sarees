@@ -1,259 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Signup</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      font-family: 'Segoe UI', Arial, sans-serif;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-    .modal {
-      position: relative;
-      background: #fff;
-      border-radius: 10px;
-      padding: 36px 40px 28px;
-      width: 100%;
-      max-width: 460px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-    }
+body{
+    height:100vh;
+    display:flex;
+}
 
-    .close-btn {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      color: #374151;
-    }
+/* LEFT SIDE */
+.left{
+    width:70%;
+    background:url("https://static.wixstatic.com/media/60b717_313c72edefe847a1a68f468a6e99caad~mv2.jpg/v1/fill/w_670,h_502,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/60b717_313c72edefe847a1a68f468a6e99caad~mv2.jpg")
+    no-repeat center center/cover;
+    position:relative;
+    color:white;
+}
 
-    h2 {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 12px;
-    }
+.brand{
+    position:absolute;
+    top:20px;
+    left:25px;
+    font-size:36px;
+    font-weight:900;
+    padding:8px 16px;
+    background:#966919;
+    border-left:6px solid #ffd54f;
+    border-radius:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
 
-    hr {
-      border: none;
-      border-top: 1px solid #e5e7eb;
-      margin-bottom: 20px;
-    }
+.left-text{
+    position:absolute;
+    top:40%;
+    left:12%;
+    font-size:30px;
+    line-height:1.4;
+}
 
-    .field {
-      margin-bottom: 14px;
-    }
+/* RIGHT SIDE */
+.right{
+    width:30%;
+    background:#966919;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-    input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 15px;
-      color: #374151;
-      background: #f9fafb;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+.card{
+    width:380px;
+    background:white;
+    padding:40px;
+    border-radius:40px 0 40px 0;
+}
 
-    input:focus {
-      border-color: #9333ea;
-    }
+.card h2{
+    text-align:center;
+    margin-bottom:30px;
+}
 
-    input.error-border {
-      border-color: #e53e3e;
-    }
+.field{
+    margin-bottom:20px;
+}
 
-    .hint {
-      font-size: 12px;
-      color: #e53e3e;
-      margin-top: 5px;
-    }
+.field input{
+    width:100%;
+    border:none;
+    border-bottom:2px solid #999;
+    padding:10px 5px;
+    font-size:14px;
+    outline:none;
+}
 
-    .hint.info {
-      color: #6b7280;
-    }
+.primary-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#966919;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+}
 
-    .hint.success {
-      color: #2d6a4f;
-    }
+.primary-btn:hover{
+    opacity:0.9;
+}
 
-    .btn-row {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 18px;
-    }
+.hint{
+    color:red;
+    font-size:12px;
+    margin-top:5px;
+}
 
-    .primary-btn {
-      background: #7B4B2A;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 11px 28px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+.success{
+    color:green;
+}
 
-    .primary-btn:hover {
-      background: #5a3520;
-    }
+.login-text{
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+}
 
-    .login-text {
-      text-align: center;
-      font-size: 14px;
-      color: #374151;
-    }
+.login-text a{
+    text-decoration:none;
+    color:#966919;
+    font-weight:bold;
+}
 
-    .login-text a {
-      color: #e53e3e;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .login-text a:hover {
-      text-decoration: underline;
-    }
-
-    #otp-field {
-      display: none;
-      margin-bottom: 14px;
-    }
-  </style>
+.error-border{
+    border-bottom:2px solid red !important;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="modal">
-    <button class="close-btn" onclick="alert('Closed')">✕</button>
-    <h2>Signup</h2>
-    <hr />
+<!-- LEFT SIDE -->
+<div class="left">
 
-    <!-- Full Name -->
-    <div class="field">
-      <input type="text" id="fullName" placeholder="Full Name*" />
-      <p class="hint" id="nameError" style="display:none;">Full name is required.</p>
+    <div class="brand">
+        Siri Saree Divine
     </div>
 
-    <!-- Email -->
-    <div class="field">
-      <input type="email" id="email" placeholder="Email Address*" />
-      <p class="hint" id="emailError" style="display:none;">Enter a valid email address.</p>
+    <div class="left-text">
+        <b>
+            Grace in every pleat,<br>
+            magic in every drape.
+        </b>
     </div>
 
-    <!-- Mobile -->
-    <div class="field">
-      <input type="tel" id="mobile" placeholder="Mobile Number*" maxlength="10" />
-      <p class="hint info">Please enter mobile number without country code. (Ex: 9876543210)</p>
-      <p class="hint" id="mobileError" style="display:none;">Enter a valid 10-digit mobile number.</p>
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right">
+
+    <div class="card">
+
+        <h2>Sign Up</h2>
+
+        <!-- Full Name -->
+        <div class="field">
+            <input type="text"
+                   id="fullName"
+                   placeholder="Full Name*">
+
+            <p class="hint"
+               id="nameError"
+               style="display:none;">
+               Full name is required.
+            </p>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="field">
+            <input type="tel"
+                   id="mobile"
+                   placeholder="Phone Number*"
+                   maxlength="10">
+
+            <p class="hint"
+               id="mobileError"
+               style="display:none;">
+               Enter a valid 10-digit phone number.
+            </p>
+        </div>
+
+        <!-- Button -->
+        <div class="field">
+            <button class="primary-btn"
+                    id="actionBtn"
+                    onclick="handleAction()">
+                SEND OTP
+            </button>
+        </div>
+
+        <!-- OTP FIELD -->
+        <div class="field"
+             id="otp-field"
+             style="display:none;">
+
+            <input type="text"
+                   id="otp"
+                   placeholder="Enter OTP"
+                   maxlength="6">
+
+            <p class="success"
+               id="otpHint"></p>
+        </div>
+
+        <p class="login-text">
+            Do you have an Account?
+            <a href="login.html">Login</a>
+        </p>
+
     </div>
 
-    <!-- OTP Field (hidden initially) -->
-    <div id="otp-field" class="field">
-      <input type="text" id="otp" placeholder="Enter OTP" maxlength="6" />
-      <p class="hint success" id="otpHint"></p>
-    </div>
+</div>
 
-    <!-- Button -->
-    <div class="btn-row">
-      <button class="primary-btn" id="actionBtn" onclick="handleAction()">SEND OTP</button>
-    </div>
+<script>
 
-    <p class="login-text">Do you have an Account? <a href="login.html">Login</a></p>
-  </div>
+let otpSent = false;
 
-  <script>
-    let otpSent = false;
-
-    function handleAction() {
-      if (!otpSent) {
+function handleAction(){
+    if(!otpSent){
         sendOtp();
-      } else {
+    }
+    else{
         verifyOtp();
-      }
+    }
+}
+
+function sendOtp(){
+
+    let valid = true;
+
+    const name =
+        document.getElementById("fullName")
+        .value.trim();
+
+    const mobile =
+        document.getElementById("mobile")
+        .value.trim();
+
+    /* Name Validation */
+    if(name === ""){
+        showError("fullName","nameError");
+        valid = false;
+    }
+    else{
+        clearError("fullName","nameError");
     }
 
-    function sendOtp() {
-      let valid = true;
-
-      const name = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const mobile = document.getElementById('mobile').value.trim();
-
-      // Name
-      if (!name) {
-        showError('fullName', 'nameError');
+    /* Mobile Validation */
+    if(!/^\d{10}$/.test(mobile)){
+        showError("mobile","mobileError");
         valid = false;
-      } else {
-        clearError('fullName', 'nameError');
-      }
-
-      // Email (optional but validate if provided)
-      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showError('email', 'emailError');
-        valid = false;
-      } else {
-        clearError('email', 'emailError');
-      }
-
-      // Mobile
-      if (!mobile || !/^\d{10}$/.test(mobile)) {
-        showError('mobile', 'mobileError');
-        valid = false;
-      } else {
-        clearError('mobile', 'mobileError');
-      }
-
-      if (!valid) return;
-
-      // Show OTP field
-      const otpField = document.getElementById('otp-field');
-      otpField.style.display = 'block';
-      document.getElementById('otpHint').textContent = 'OTP sent to +91 ' + mobile;
-      document.getElementById('actionBtn').textContent = 'VERIFY OTP';
-      otpSent = true;
+    }
+    else{
+        clearError("mobile","mobileError");
     }
 
-    function verifyOtp() {
-      const otp = document.getElementById('otp').value.trim();
-      if (!otp || otp.length < 4) {
-        alert('Please enter the OTP sent to your mobile.');
+    if(!valid){
         return;
-      }
-      alert('OTP verified! Signup successful.');
     }
 
-    function showError(inputId, errorId) {
-      document.getElementById(inputId).classList.add('error-border');
-      document.getElementById(errorId).style.display = 'block';
+    /* Show OTP Field */
+    document.getElementById("otp-field")
+            .style.display = "block";
+
+    document.getElementById("otpHint")
+            .innerHTML =
+            "OTP sent to +91 " + mobile;
+
+    document.getElementById("actionBtn")
+            .innerHTML =
+            "VERIFY OTP";
+
+    otpSent = true;
+}
+
+function verifyOtp(){
+
+    const otp =
+        document.getElementById("otp")
+        .value.trim();
+
+    if(otp.length !== 6){
+        alert("Please enter a valid 6-digit OTP");
+        return;
     }
 
-    function clearError(inputId, errorId) {
-      document.getElementById(inputId).classList.remove('error-border');
-      document.getElementById(errorId).style.display = 'none';
-    }
+    alert("OTP Verified! Signup Successful.");
+}
 
-    // Clear errors on input
-    ['fullName', 'email', 'mobile'].forEach(id => {
-      document.getElementById(id).addEventListener('input', () => {
-        document.getElementById(id).classList.remove('error-border');
-        const errMap = { fullName: 'nameError', email: 'emailError', mobile: 'mobileError' };
-        document.getElementById(errMap[id]).style.display = 'none';
-      });
+function showError(inputId,errorId){
+
+    document.getElementById(inputId)
+            .classList.add("error-border");
+
+    document.getElementById(errorId)
+            .style.display = "block";
+}
+
+function clearError(inputId,errorId){
+
+    document.getElementById(inputId)
+            .classList.remove("error-border");
+
+    document.getElementById(errorId)
+            .style.display = "none";
+}
+
+/* Remove Errors While Typing */
+["fullName","mobile"].forEach(id => {
+
+    document.getElementById(id)
+    .addEventListener("input", function(){
+
+        this.classList.remove("error-border");
+
+        if(id === "fullName"){
+            document.getElementById("nameError")
+                    .style.display = "none";
+        }
+
+        if(id === "mobile"){
+            document.getElementById("mobileError")
+                    .style.display = "none";
+        }
+
     });
-  </script>
+
+});
+
+</script>
 
 </body>
 </html>

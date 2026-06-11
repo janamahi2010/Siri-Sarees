@@ -1,351 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      font-family: 'Segoe UI', Arial, sans-serif;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-    .modal {
-      position: relative;
-      background: #fff;
-      border-radius: 10px;
-      padding: 36px 40px 28px;
-      width: 100%;
-      max-width: 460px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
-    }
+body{
+    height:100vh;
+    display:flex;
+}
 
-    .close-btn {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      color: #374151;
-    }
+/* LEFT SIDE */
+.left{
+    width:70%;
+    background:url("https://static.wixstatic.com/media/60b717_313c72edefe847a1a68f468a6e99caad~mv2.jpg/v1/fill/w_670,h_502,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/60b717_313c72edefe847a1a68f468a6e99caad~mv2.jpg")
+    no-repeat center center/cover;
+    position:relative;
+    color:white;
+}
 
-    h2 {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 12px;
-    }
+.brand{
+    position:absolute;
+    top:20px;
+    left:25px;
+    font-size:36px;
+    font-weight:900;
+    padding:8px 16px;
+    background:#966919;
+    border-left:6px solid #ffd54f;
+    border-radius:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
 
-    hr {
-      border: none;
-      border-top: 1px solid #e5e7eb;
-      margin-bottom: 24px;
-    }
+.left-text{
+    position:absolute;
+    top:40%;
+    left:12%;
+    font-size:30px;
+    line-height:1.4;
+}
 
-    .field {
-      margin-bottom: 16px;
-    }
+/* RIGHT SIDE */
+.right{
+    width:30%;
+    background:#966919;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-    label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 6px;
-    }
+.card{
+    width:380px;
+    background:white;
+    padding:40px;
+    border-radius:40px 0 40px 0;
+}
 
-    input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 15px;
-      color: #374151;
-      background: #f9fafb;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+.card h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#333;
+}
 
-    input:focus {
-      border-color: #7B4B2A;
-    }
+.field{
+    margin-bottom:20px;
+}
 
-    input.error-border {
-      border-color: #e53e3e;
-    }
+.field input{
+    width:100%;
+    border:none;
+    border-bottom:2px solid #999;
+    padding:10px 5px;
+    font-size:14px;
+    outline:none;
+}
 
-    .hint {
-      font-size: 12px;
-      color: #e53e3e;
-      margin-top: 5px;
-      display: none;
-    }
+.primary-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#966919;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+}
 
-    .hint.info {
-      color: #6b7280;
-      display: block;
-    }
+.primary-btn:hover{
+    opacity:0.9;
+}
 
-    .hint.success {
-      color: #2d6a4f;
-      display: block;
-    }
+.hint{
+    color:red;
+    font-size:12px;
+    margin-top:5px;
+}
 
-    .forgot {
-      text-align: right;
-      margin-top: 6px;
-    }
+.login-text{
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+}
 
-    .forgot a {
-      font-size: 13px;
-      color: #7B4B2A;
-      text-decoration: none;
-    }
+.login-text a{
+    text-decoration:none;
+    color:#966919;
+    font-weight:bold;
+}
 
-    .forgot a:hover {
-      text-decoration: underline;
-    }
+.error-border{
+    border-bottom:2px solid red !important;
+}
 
-    .btn-row {
-      margin-top: 22px;
-      margin-bottom: 18px;
-    }
+.forgot{
+    text-align:right;
+    margin-top:-10px;
+    margin-bottom:20px;
+}
 
-    .primary-btn {
-      width: 100%;
-      background: #7B4B2A;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 13px;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+.forgot a{
+    text-decoration:none;
+    color:#966919;
+    font-size:14px;
+}
 
-    .primary-btn:hover {
-      background: #5a3520;
-    }
-
-    /* OTP login toggle */
-    .toggle-row {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-
-    .toggle-row span {
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .toggle-row a {
-      font-size: 13px;
-      color: #7B4B2A;
-      text-decoration: none;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .toggle-row a:hover {
-      text-decoration: underline;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 18px 0;
-    }
-
-    .divider hr {
-      flex: 1;
-      border-top: 1px solid #e5e7eb;
-      margin: 0;
-    }
-
-    .divider span {
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    .signup-text {
-      text-align: center;
-      font-size: 14px;
-      color: #374151;
-    }
-
-    .signup-text a {
-      color: #7B4B2A;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .signup-text a:hover {
-      text-decoration: underline;
-    }
-
-    /* OTP section hidden by default */
-    #otpSection { display: none; }
-  </style>
+.otp-text{
+    text-align:center;
+    margin-top:15px;
+    margin-bottom:15px;
+    color:#555;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="modal">
-    <button class="close-btn" onclick="window.history.back()">✕</button>
-    <h2>Login</h2>
-    <hr />
+<!-- LEFT SIDE -->
+<div class="left">
 
-    <!-- PASSWORD LOGIN -->
-    <div id="passwordSection">
+    <div class="brand">
+        Siri Saree Divine
+    </div>
 
-      <!-- Mobile / Email -->
-      <div class="field">
-        <label for="loginId">Mobile Number / Email</label>
-        <input type="text" id="loginId" placeholder="Enter mobile number or email" />
-        <p class="hint" id="loginIdError">Please enter your mobile number or email.</p>
-      </div>
+    <div class="left-text">
+        <b>
+            Grace in every pleat,<br>
+            magic in every drape.
+        </b>
+    </div>
 
-      <!-- Password -->
-      <div class="field">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" />
-        <p class="hint" id="passwordError">Please enter your password.</p>
-        <div class="forgot"><a href="forgot.html">Forgot Password?</a></div>
-      </div>
+</div>
 
-      <div class="btn-row">
-        <button class="primary-btn" onclick="handlePasswordLogin()">LOGIN</button>
-      </div>
+<!-- RIGHT SIDE -->
+<div class="right">
 
-      <div class="toggle-row">
-        <span>Or </span>
-        <a onclick="switchToOtp()">Login with OTP</a>
-      </div>
+    <div class="card">
+
+        <h2>Login</h2>
+
+        <!-- Mobile Number / Email -->
+        <div class="field">
+            <input type="text"
+                   id="loginId"
+                   placeholder="Mobile Number / Email">
+
+            <p class="hint"
+               id="loginError"
+               style="display:none;">
+               Please enter mobile number or email.
+            </p>
+        </div>
+
+        <!-- Password -->
+        <div class="field">
+            <input type="password"
+                   id="password"
+                   placeholder="Password">
+
+            <p class="hint"
+               id="passwordError"
+               style="display:none;">
+               Please enter password.
+            </p>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="forgot">
+            <a href="forgot.html">Forgot Password?</a>
+        </div>
+
+        <!-- Login Button -->
+        <div class="field">
+            <button class="primary-btn"
+                    onclick="loginUser()">
+                LOGIN
+            </button>
+        </div>
+
+        <!-- OTP Login -->
+        <div class="otp-text">
+            Or Login with OTP
+        </div>
+
+        <!-- Signup Link -->
+        <p class="login-text">
+            Don't have an Account?
+            <a href="signup.html">Signup</a>
+        </p>
 
     </div>
 
-    <!-- OTP LOGIN -->
-    <div id="otpSection">
+</div>
 
-      <div class="field">
-        <label for="otpMobile">Mobile Number</label>
-        <input type="tel" id="otpMobile" placeholder="Enter mobile number" maxlength="10" />
-        <p class="hint info">Please enter mobile number without country code. (Ex: 9885098850)</p>
-        <p class="hint" id="otpMobileError">Enter a valid 10-digit mobile number.</p>
-      </div>
+<script>
 
-      <div class="field" id="otpInputField" style="display:none;">
-        <label for="otpCode">Enter OTP</label>
-        <input type="text" id="otpCode" placeholder="Enter OTP" maxlength="6" />
-        <p class="hint success" id="otpSentMsg"></p>
-        <p class="hint" id="otpCodeError">Please enter the OTP.</p>
-      </div>
+function loginUser(){
 
-      <div class="btn-row">
-        <button class="primary-btn" id="otpActionBtn" onclick="handleOtpAction()">SEND OTP</button>
-      </div>
+    let loginId =
+        document.getElementById("loginId")
+        .value.trim();
 
-      <div class="toggle-row">
-        <span>Or </span>
-        <a onclick="switchToPassword()">Login with Password</a>
-      </div>
+    let password =
+        document.getElementById("password")
+        .value.trim();
 
-    </div>
+    let valid = true;
 
-    <div class="divider">
-      <hr /><span>New here?</span><hr />
-    </div>
-
-    <p class="signup-text">Don't have an Account? <a href="signup.html">Signup</a></p>
-  </div>
-
-  <script>
-    let otpSent = false;
-
-    /* ── Password Login ── */
-    function handlePasswordLogin() {
-      let valid = true;
-
-      const id = document.getElementById('loginId').value.trim();
-      const pw = document.getElementById('password').value.trim();
-
-      if (!id) { showErr('loginId', 'loginIdError'); valid = false; }
-      else clearErr('loginId', 'loginIdError');
-
-      if (!pw) { showErr('password', 'passwordError'); valid = false; }
-      else clearErr('password', 'passwordError');
-
-      if (!valid) return;
-      alert('Login successful! (demo)');
+    if(loginId === ""){
+        document.getElementById("loginError")
+                .style.display = "block";
+        document.getElementById("loginId")
+                .classList.add("error-border");
+        valid = false;
+    }
+    else{
+        document.getElementById("loginError")
+                .style.display = "none";
+        document.getElementById("loginId")
+                .classList.remove("error-border");
     }
 
-    /* ── OTP Login ── */
-    function handleOtpAction() {
-      if (!otpSent) {
-        const mobile = document.getElementById('otpMobile').value.trim();
-        if (!/^\d{10}$/.test(mobile)) {
-          showErr('otpMobile', 'otpMobileError'); return;
-        }
-        clearErr('otpMobile', 'otpMobileError');
-        document.getElementById('otpInputField').style.display = 'block';
-        document.getElementById('otpSentMsg').textContent = 'OTP sent to +91 ' + mobile;
-        document.getElementById('otpActionBtn').textContent = 'VERIFY OTP';
-        otpSent = true;
-      } else {
-        const code = document.getElementById('otpCode').value.trim();
-        if (!code || code.length < 4) {
-          showErr('otpCode', 'otpCodeError'); return;
-        }
-        clearErr('otpCode', 'otpCodeError');
-        alert('OTP verified! Login successful. (demo)');
-      }
+    if(password === ""){
+        document.getElementById("passwordError")
+                .style.display = "block";
+        document.getElementById("password")
+                .classList.add("error-border");
+        valid = false;
+    }
+    else{
+        document.getElementById("passwordError")
+                .style.display = "none";
+        document.getElementById("password")
+                .classList.remove("error-border");
     }
 
-    /* ── Toggle sections ── */
-    function switchToOtp() {
-      document.getElementById('passwordSection').style.display = 'none';
-      document.getElementById('otpSection').style.display = 'block';
-      otpSent = false;
-      document.getElementById('otpActionBtn').textContent = 'SEND OTP';
-      document.getElementById('otpInputField').style.display = 'none';
+    if(valid){
+        alert("Login Successful!");
     }
+}
 
-    function switchToPassword() {
-      document.getElementById('otpSection').style.display = 'none';
-      document.getElementById('passwordSection').style.display = 'block';
-    }
-
-    /* ── Helpers ── */
-    function showErr(inputId, errId) {
-      document.getElementById(inputId).classList.add('error-border');
-      document.getElementById(errId).style.display = 'block';
-    }
-    function clearErr(inputId, errId) {
-      document.getElementById(inputId).classList.remove('error-border');
-      document.getElementById(errId).style.display = 'none';
-    }
-
-    ['loginId', 'password', 'otpMobile', 'otpCode'].forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const errMap = {
-        loginId: 'loginIdError', password: 'passwordError',
-        otpMobile: 'otpMobileError', otpCode: 'otpCodeError'
-      };
-      el.addEventListener('input', () => clearErr(id, errMap[id]));
-    });
-  </script>
+</script>
 
 </body>
 </html>
